@@ -6,7 +6,8 @@ require_once __DIR__ . '/funcoes.php';
 
 function iniciar_sessao(): void
 {
-    if (session_status() === PHP_SESSION_ACTIVE) {
+    // Já iniciada, ou já houve saída (não dá mais para enviar o cookie).
+    if (session_status() === PHP_SESSION_ACTIVE || headers_sent()) {
         return;
     }
     session_set_cookie_params([
@@ -31,6 +32,7 @@ function verificar_senha(string $email, string $senha, string $hash_salvo): bool
 
 function csrf_token(): string
 {
+    iniciar_sessao();
     if (empty($_SESSION['csrf'])) {
         $_SESSION['csrf'] = bin2hex(random_bytes(32));
     }
@@ -45,6 +47,7 @@ function csrf_campo(): string
 
 function csrf_validar(?string $token): bool
 {
+    iniciar_sessao();
     if (empty($_SESSION['csrf']) || $token === null || $token === '') {
         return false;
     }
@@ -64,6 +67,7 @@ function login_usuario(array $usuario): void
 
 function usuario_logado(): ?array
 {
+    iniciar_sessao();
     return $_SESSION['usuario'] ?? null;
 }
 

@@ -1,7 +1,9 @@
 <?php
 // Página exibida quando não é possível conectar ao banco de dados.
 // Não usa sessão nem banco: precisa funcionar justamente quando eles falham.
-http_response_code(503);
+if (!headers_sent()) {
+    http_response_code(503);
+}
 ?>
 <!doctype html>
 <html lang="pt-br">
