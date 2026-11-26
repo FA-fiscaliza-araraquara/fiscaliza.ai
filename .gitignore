@@ -2,8 +2,8 @@
 Projeto de Curriculariza*.pdf
 
 # Fotos enviadas pelos usuarios do sistema
-uploads/*
-!uploads/.gitkeep
+uploads/denuncias/*
+!uploads/denuncias/.gitkeep
 
 # Arquivos temporarios do Word
 ~$*
