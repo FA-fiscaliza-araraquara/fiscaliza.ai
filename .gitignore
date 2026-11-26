@@ -1,0 +1,13 @@
+﻿# Enunciado do professor (material dele, nao do projeto)
+Projeto de Curriculariza*.pdf
+
+# Fotos enviadas pelos usuarios do sistema
+uploads/*
+!uploads/.gitkeep
+
+# Arquivos temporarios do Word
+~$*
+
+# Arquivos do Windows
+Thumbs.db
+desktop.ini
