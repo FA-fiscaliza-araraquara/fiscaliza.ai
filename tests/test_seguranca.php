@@ -27,3 +27,12 @@ teste('nivel_permitido_sim', nivel_permitido(['nivel' => 'agente'], ['agente', '
 
 teste('nivel_permitido_nao', !nivel_permitido(['nivel' => 'cidadao'], ['agente', 'admin'])
     && !nivel_permitido(null, ['admin']));
+
+$_SESSION = [];
+csrf_token();
+try {
+    $resultado = csrf_validar(['x']);
+    teste('csrf_array_rejeitado', $resultado === false);
+} catch (Throwable $erro) {
+    teste('csrf_array_rejeitado', iguais('sem exceção', get_class($erro)));
+}

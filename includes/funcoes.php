@@ -70,3 +70,12 @@ function redirecionar(string $url): never
     header('Location: ' . $url);
     exit;
 }
+
+/** Item de menu com destaque quando é a página atual. */
+function link_menu(string $url, string $icone, string $texto, string $pagina_atual): string
+{
+    $ativo = ($pagina_atual === $url);
+    return '<li class="nav-item"><a class="nav-link' . ($ativo ? ' active' : '') . '"'
+        . ($ativo ? ' aria-current="page"' : '') . ' href="' . e($url) . '">'
+        . '<i class="bi bi-' . e($icone) . '" aria-hidden="true"></i> ' . e($texto) . '</a></li>';
+}

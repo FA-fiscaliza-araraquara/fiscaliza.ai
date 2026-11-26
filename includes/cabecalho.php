@@ -8,15 +8,6 @@ iniciar_sessao();
 $usuario = usuario_logado();
 $nivel = $usuario['nivel'] ?? null;
 $pagina_atual = $_SERVER['SCRIPT_NAME'] ?? '';
-
-/** Item de menu com destaque quando é a página atual. */
-function link_menu(string $url, string $icone, string $texto, string $pagina_atual): string
-{
-    $ativo = ($pagina_atual === $url);
-    return '<li class="nav-item"><a class="nav-link' . ($ativo ? ' active' : '') . '"'
-        . ($ativo ? ' aria-current="page"' : '') . ' href="' . e($url) . '">'
-        . '<i class="bi bi-' . e($icone) . '" aria-hidden="true"></i> ' . e($texto) . '</a></li>';
-}
 ?>
 <!doctype html>
 <html lang="pt-br">
