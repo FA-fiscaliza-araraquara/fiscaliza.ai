@@ -1,0 +1,164 @@
+/* Fiscaliza.ai – tema visual
+   Referências: placas de nome de rua (azul-petróleo com borda branca)
+   e o laranja de Araraquara, a cidade da laranja, também a cor das placas de obra. */
+
+:root {
+    --fz-primaria: #0b6e75;        /* azul-petróleo das placas */
+    --fz-primaria-escura: #084e53;
+    --fz-laranja: #e8730c;         /* destaque: laranja / obra */
+    --fz-laranja-escura: #c95f00;
+    --fz-papel: #f8f9fa;           /* fundo */
+    --fz-tinta: #1d2327;           /* texto */
+    --fz-linha: #d9dee2;
+
+    --bs-body-bg: var(--fz-papel);
+    --bs-body-color: var(--fz-tinta);
+    --bs-body-font-family: "Barlow", system-ui, sans-serif;
+    --bs-body-font-size: 1.0625rem;
+    --bs-link-color: var(--fz-primaria);
+    --bs-link-color-rgb: 11, 110, 117;
+    --bs-link-hover-color: var(--fz-primaria-escura);
+    --bs-link-hover-color-rgb: 8, 78, 83;
+    --bs-border-color: var(--fz-linha);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main { flex: 1 0 auto; }
+
+h1, h2, h3, h4, .titulo-placa {
+    font-family: "Barlow Semi Condensed", "Barlow", sans-serif;
+    font-weight: 700;
+    letter-spacing: .005em;
+    line-height: 1.15;
+}
+
+h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+:focus-visible {
+    outline: 3px solid var(--fz-laranja);
+    outline-offset: 2px;
+}
+
+.pular-conteudo {
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    z-index: 1050;
+    background: #fff;
+    padding: .5rem 1rem;
+}
+
+/* ---------- Marca: placa de nome de rua ---------- */
+.placa-rua {
+    display: inline-block;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: #fff;
+    background: var(--fz-primaria);
+    border: 2px solid #fff;
+    outline: 3px solid var(--fz-primaria);
+    border-radius: 4px;
+    padding: .05rem .75rem;
+    line-height: 1.4;
+}
+
+.navbar-brand.placa-rua:hover,
+.navbar-brand.placa-rua:focus { color: #fff; }
+
+.placa-rua-pequena {
+    font-size: 1rem;
+    padding: 0 .5rem;
+    outline-width: 2px;
+    border-width: 1.5px;
+}
+
+/* ---------- Barra superior ---------- */
+.barra-topo {
+    background: var(--fz-primaria-escura);
+    padding-top: .9rem;
+    padding-bottom: .9rem;
+}
+
+.barra-topo .nav-link { color: rgba(255, 255, 255, .82); }
+.barra-topo .nav-link:hover,
+.barra-topo .nav-link:focus-visible,
+.barra-topo .nav-link.active { color: #fff; }
+.barra-topo .nav-link.active { box-shadow: inset 0 -3px 0 var(--fz-laranja); }
+.barra-topo .navbar-text { color: rgba(255, 255, 255, .82); }
+
+/* ---------- Botões ---------- */
+.btn-primary {
+    --bs-btn-bg: var(--fz-primaria);
+    --bs-btn-border-color: var(--fz-primaria);
+    --bs-btn-hover-bg: var(--fz-primaria-escura);
+    --bs-btn-hover-border-color: var(--fz-primaria-escura);
+    --bs-btn-active-bg: var(--fz-primaria-escura);
+    --bs-btn-active-border-color: var(--fz-primaria-escura);
+}
+
+.btn-laranja {
+    --bs-btn-color: var(--fz-tinta);
+    --bs-btn-bg: var(--fz-laranja);
+    --bs-btn-border-color: var(--fz-laranja);
+    --bs-btn-hover-color: var(--fz-tinta);
+    --bs-btn-hover-bg: #f08a2c;
+    --bs-btn-hover-border-color: #f08a2c;
+    --bs-btn-active-color: var(--fz-tinta);
+    --bs-btn-active-bg: var(--fz-laranja-escura);
+    --bs-btn-active-border-color: var(--fz-laranja-escura);
+    font-weight: 600;
+}
+
+/* ---------- Cartões ---------- */
+.card {
+    --bs-card-border-color: var(--fz-linha);
+    --bs-card-border-radius: 6px;
+}
+
+/* ---------- Status das denúncias ---------- */
+.badge-status {
+    display: inline-block;
+    font-size: .8125rem;
+    font-weight: 600;
+    padding: .2rem .55rem;
+    border-radius: 3px;
+    border-left: 4px solid currentColor;
+}
+
+.badge-status-pendente     { background: #eceff1; color: #4a5258; }
+.badge-status-rejeitada    { background: #fde8e7; color: #9b1c13; }
+.badge-status-aberta       { background: #e4eefb; color: #1a55a8; }
+.badge-status-em_andamento { background: #fff0e0; color: #9a4700; }
+.badge-status-resolvida    { background: #e3f3e7; color: #22703a; }
+
+/* ---------- Rodapé ---------- */
+.rodape {
+    background: var(--fz-tinta);
+    color: rgba(255, 255, 255, .78);
+    padding: 1.5rem 0;
+    font-size: .9375rem;
+    margin-top: 3rem;
+}
+
+.rodape .placa-rua { outline-color: var(--fz-tinta); }
+
+/* ---------- Página de erro ---------- */
+.pagina-erro {
+    max-width: 38rem;
+    border-left: 6px solid var(--fz-laranja);
+    padding-left: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
