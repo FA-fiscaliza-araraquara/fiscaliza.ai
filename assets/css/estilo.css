@@ -162,3 +162,118 @@ h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
         animation: none !important;
     }
 }
+
+/* ---------- Página inicial ---------- */
+.destaque {
+    padding: 2rem 0 3rem;
+}
+
+.destaque-texto {
+    font-size: 1.25rem;
+    max-width: 36rem;
+    margin: 1rem 0 1.75rem;
+}
+
+/* Painel com os números, no estilo de placa de informação */
+.painel-numeros {
+    background: var(--fz-primaria);
+    color: #fff;
+    border: 3px solid #fff;
+    outline: 4px solid var(--fz-primaria);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    gap: .75rem;
+}
+
+.numero {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    border-left: 6px solid;
+    padding-left: .75rem;
+}
+
+.numero strong {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    min-width: 2ch;
+}
+
+.numero span { font-size: 1.125rem; }
+
+.numero-aberta       { border-color: #8fb8f2; }
+.numero-em_andamento { border-color: var(--fz-laranja); }
+.numero-resolvida    { border-color: #8fd3a0; }
+
+.como-funciona {
+    border-top: 1px solid var(--fz-linha);
+    border-bottom: 1px solid var(--fz-linha);
+    padding: 2rem 0;
+    margin-bottom: 2.5rem;
+}
+
+.passos {
+    list-style: none;
+    counter-reset: passo;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .passos { grid-template-columns: repeat(3, 1fr); }
+}
+
+.passos li {
+    counter-increment: passo;
+    position: relative;
+    padding-left: 3.25rem;
+}
+
+.passos li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    background: var(--fz-laranja);
+    color: var(--fz-tinta);
+    line-height: 1;
+    /* losango: formato das placas de advertência */
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.passos h3 { font-size: 1.25rem; margin-bottom: .25rem; }
+.passos p { margin: 0; }
+
+.vazio {
+    border: 2px dashed var(--fz-linha);
+    border-radius: 6px;
+    padding: 1.5rem;
+    background: #fff;
+}
+
+.cartao-denuncia {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cartao-denuncia:hover { border-color: var(--fz-primaria); }
+.cartao-denuncia .card-footer { background: transparent; }
+
+.cartao-categoria {
+    color: var(--fz-primaria);
+    font-weight: 600;
+    margin-bottom: .35rem;
+}
+
+.cartao-bairro { margin: 0; color: #5b646a; }
