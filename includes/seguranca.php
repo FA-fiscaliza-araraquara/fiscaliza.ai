@@ -45,10 +45,11 @@ function csrf_campo(): string
     return '<input type="hidden" name="csrf" value="' . e(csrf_token()) . '">';
 }
 
-function csrf_validar(?string $token): bool
+/** Aceita qualquer valor vindo de $_POST: só string não vazia e igual ao da sessão é válida. */
+function csrf_validar(mixed $token): bool
 {
     iniciar_sessao();
-    if (empty($_SESSION['csrf']) || $token === null || $token === '') {
+    if (empty($_SESSION['csrf']) || !is_string($token) || $token === '') {
         return false;
     }
     return hash_equals($_SESSION['csrf'], $token);

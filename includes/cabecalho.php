@@ -8,15 +8,6 @@ iniciar_sessao();
 $usuario = usuario_logado();
 $nivel = $usuario['nivel'] ?? null;
 $pagina_atual = $_SERVER['SCRIPT_NAME'] ?? '';
-
-/** Item de menu com destaque quando é a página atual. */
-function link_menu(string $url, string $icone, string $texto, string $pagina_atual): string
-{
-    $ativo = ($pagina_atual === $url);
-    return '<li class="nav-item"><a class="nav-link' . ($ativo ? ' active' : '') . '"'
-        . ($ativo ? ' aria-current="page"' : '') . ' href="' . e($url) . '">'
-        . '<i class="bi bi-' . e($icone) . '" aria-hidden="true"></i> ' . e($texto) . '</a></li>';
-}
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -71,7 +62,14 @@ function link_menu(string $url, string $icone, string $texto, string $pagina_atu
                     <li class="nav-item"><span class="navbar-text me-lg-3">
                         <i class="bi bi-person-circle" aria-hidden="true"></i> <?= e($usuario['nome']) ?>
                     </span></li>
-                    <li class="nav-item"><a class="nav-link" href="/fiscaliza/auth/logout.php">Sair</a></li>
+                    <li class="nav-item">
+                        <form method="post" action="/fiscaliza/auth/logout.php" class="m-0">
+                            <?= csrf_campo() ?>
+                            <button type="submit" class="nav-link botao-sair">
+                                <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Sair
+                            </button>
+                        </form>
+                    </li>
                 <?php else: ?>
                     <?= link_menu('/fiscaliza/auth/login.php', 'box-arrow-in-right', 'Entrar', $pagina_atual) ?>
                     <li class="nav-item ms-lg-2"><a class="btn btn-laranja btn-sm mt-1 mt-lg-0" href="/fiscaliza/auth/cadastro.php">Cadastrar-se</a></li>

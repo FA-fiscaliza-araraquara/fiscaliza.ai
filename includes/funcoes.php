@@ -70,3 +70,32 @@ function redirecionar(string $url): never
     header('Location: ' . $url);
     exit;
 }
+
+/** Item de menu com destaque quando é a página atual. */
+function link_menu(string $url, string $icone, string $texto, string $pagina_atual): string
+{
+    $ativo = ($pagina_atual === $url);
+    return '<li class="nav-item"><a class="nav-link' . ($ativo ? ' active' : '') . '"'
+        . ($ativo ? ' aria-current="page"' : '') . ' href="' . e($url) . '">'
+        . '<i class="bi bi-' . e($icone) . '" aria-hidden="true"></i> ' . e($texto) . '</a></li>';
+}
+
+/** Lê um campo de texto do POST; qualquer coisa que não seja string vira ''. */
+function post_texto(string $campo): string
+{
+    $valor = $_POST[$campo] ?? '';
+    return is_string($valor) ? $valor : '';
+}
+
+/** Classe e mensagem de erro do Bootstrap para um campo de formulário. */
+function classe_erro(array $erros, string $campo): string
+{
+    return isset($erros[$campo]) ? ' is-invalid' : '';
+}
+
+function mensagem_erro(array $erros, string $campo): string
+{
+    return isset($erros[$campo])
+        ? '<div class="invalid-feedback" id="erro-' . e($campo) . '">' . e($erros[$campo]) . '</div>'
+        : '';
+}

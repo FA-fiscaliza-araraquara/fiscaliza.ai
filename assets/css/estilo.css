@@ -277,3 +277,36 @@ h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 
 .cartao-bairro { margin: 0; color: #5b646a; }
+
+/* ---------- Páginas de conta (entrar / criar conta) ---------- */
+.conta-cartao {
+    max-width: 32rem;
+    margin: 1.5rem auto 0;
+    background: #fff;
+    border: 1px solid var(--fz-linha);
+    border-top: 6px solid var(--fz-primaria);
+    border-radius: 6px;
+    padding: 2rem;
+}
+
+.conta-cartao-largo { max-width: 40rem; }
+
+.conta-cartao h1 { font-size: 2rem; margin-bottom: .25rem; }
+
+.conta-subtitulo { color: #5b646a; margin-bottom: 1.5rem; }
+
+.conta-rodape {
+    margin: 1.5rem 0 0;
+    text-align: center;
+}
+
+.form-label { font-weight: 600; }
+
+.botao-sair {
+    background: none;
+    border: 0;
+}
+
+@media (max-width: 575.98px) {
+    .conta-cartao { padding: 1.25rem; margin-top: .5rem; }
+}

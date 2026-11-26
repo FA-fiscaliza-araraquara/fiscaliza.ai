@@ -15,3 +15,6 @@ teste('conexao_le_acentos', iguais('Jardim Ártico', $linha['nome'] ?? null));
 
 $linha = mysqli_fetch_assoc(mysqli_query($conn, "SELECT nivel FROM usuarios WHERE email = 'admin@fiscaliza.ai'"));
 teste('admin_inicial_existe', iguais('admin', $linha['nivel'] ?? null));
+
+// Datas e a regra dos 16 anos usam o horário de Brasília, não o do php.ini do XAMPP.
+teste('fuso_horario_brasilia', iguais('America/Sao_Paulo', date_default_timezone_get()));

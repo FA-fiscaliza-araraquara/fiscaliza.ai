@@ -7,6 +7,10 @@ define('DB_USUARIO', 'root');
 define('DB_SENHA', '');
 define('DB_NOME', getenv('FISCALIZA_DB') ?: 'fiscaliza');
 
+// Horário de Brasília para todas as datas do sistema (o php.ini do XAMPP pode vir
+// com outro fuso, o que mudaria o "hoje" usado na regra dos 16 anos).
+date_default_timezone_set('America/Sao_Paulo');
+
 /** Mostra a página amigável de erro do banco e encerra (sem detalhes técnicos na tela). */
 function mostrar_erro_banco(): never
 {
